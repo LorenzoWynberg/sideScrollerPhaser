@@ -2,10 +2,10 @@
 let gameScene = new Phaser.Scene('Game');
 
 // some parameters for our scene
-gameScene.init = function() {};
+gameScene.init = function () {};
 
 // load asset files for our game
-gameScene.preload = function() {
+gameScene.preload = function () {
   // load images
   this.load.image('ground', 'assets/images/ground.png');
   this.load.image('platform', 'assets/images/platform.png');
@@ -18,22 +18,21 @@ gameScene.preload = function() {
     frameWidth: 28,
     frameHeight: 30,
     margin: 1,
-    spacing: 1
+    spacing: 1,
   });
 
   this.load.spritesheet('fire', 'assets/images/fire_spritesheet.png', {
     frameWidth: 20,
     frameHeight: 21,
     margin: 1,
-    spacing: 1
+    spacing: 1,
   });
 };
 
 // executed once, after assets were loaded
-gameScene.create = function() {
-  let ground = this.physics.add.sprite(180, 100, 'ground');
-  let ground2 = this.physics.add.sprite(180, 300, 'ground');
-  ground2.body.allowGravity = false;
+gameScene.create = function () {
+  let ground = this.add.sprite(180, 604, 'ground');
+  this.physics.add.existing(ground, true);
 };
 
 // our game's configuration
@@ -47,10 +46,10 @@ let config = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 100},
-      debug: true
-    }
-  }
+      gravity: { y: 100 },
+      debug: true,
+    },
+  },
 };
 
 // create the game, and pass it the configuration
