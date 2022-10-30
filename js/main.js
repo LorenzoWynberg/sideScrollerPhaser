@@ -31,6 +31,9 @@ gameScene.preload = function() {
 
 // executed once, after assets were loaded
 gameScene.create = function() {
+  let ground = this.physics.add.sprite(180, 100, 'ground');
+  let ground2 = this.physics.add.sprite(180, 300, 'ground');
+  ground2.body.allowGravity = false;
 };
 
 // our game's configuration
