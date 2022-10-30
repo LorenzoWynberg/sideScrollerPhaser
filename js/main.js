@@ -42,9 +42,21 @@ gameScene.create = function () {
   this.platforms.add(platform);
 
   this.player = this.add.sprite(180, 400, 'player', 3);
-  this.physics.add.existing(player);
+  this.physics.add.existing(this.player);
 
   this.physics.add.collider(this.player, this.platforms);
+
+  this.cursors = this.input.keyboard.createCursorKeys();
+};
+
+gameScene.update = function () {
+  if (this.cursors.left.isDown) {
+    this.player.body.setVelocityX(-100);
+  } else if (this.cursors.right.isDown) {
+    this.player.body.setVelocityX(100);
+  } else {
+    this.player.body.setVelocityX(0);
+  }
 };
 
 // our game's configuration
@@ -58,7 +70,7 @@ let config = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 100 },
+      gravity: { y: 1000 },
       debug: true,
     },
   },
