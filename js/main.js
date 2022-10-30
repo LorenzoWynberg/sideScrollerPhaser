@@ -41,6 +41,13 @@ let config = {
   scene: gameScene,
   title: 'Monster Kong',
   pixelArt: false,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 100},
+      debug: true
+    }
+  }
 };
 
 // create the game, and pass it the configuration
