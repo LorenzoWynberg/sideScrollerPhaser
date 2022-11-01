@@ -34,6 +34,9 @@ gameScene.preload = function () {
 
 // executed once, after assets were loaded
 gameScene.create = function () {
+  this.physics.world.bounds.width = 360;
+  this.physics.world.bounds.height = 700;
+
   this.platforms = this.add.group();
 
   let ground = this.add.sprite(180, 604, 'ground');
@@ -46,6 +49,7 @@ gameScene.create = function () {
 
   this.player = this.add.sprite(180, 400, 'player', 3);
   this.physics.add.existing(this.player);
+  this.player.body.setCollideWorldBounds(true);
 
   this.anims.create({
     key: 'walking',
